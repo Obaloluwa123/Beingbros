@@ -1,0 +1,9 @@
+from django.apps import AppConfig
+
+
+class BrosConfig(AppConfig):
+    default_auto_field = 'django.db.models.BigAutoField'
+    name = 'bros'
+
+    def ready(self):
+        import bros.signals
