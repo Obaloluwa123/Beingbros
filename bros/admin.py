@@ -1,9 +1,9 @@
 from django.contrib import admin
-from . import models
+from .models import *
 # Register your models here.
 
-admin.site.register(models.Profile)
-admin.site.register(models.Followers)
-admin.site.register(models.Following)
-admin.site.register(models.TimeLine)
-admin.site.register(models.Story)
+admin.site.register(Profile)
+admin.site.register(Followers)
+admin.site.register(Following)
+admin.site.register(TimeLine)
+admin.site.register(Story)

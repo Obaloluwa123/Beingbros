@@ -1,6 +1,8 @@
+from django import forms
 from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.deletion import CASCADE
+from django.forms import widgets
 from django.utils import timezone
 from django.dispatch import receiver
 from django.db.models.signals import post_save
@@ -10,7 +12,7 @@ import datetime
 # Create your models here.
 
 class Profile(models.Model):
-    bro          = models.ForeignKey(User, on_delete=models.CASCADE)
+    bro          = models.OneToOneField(User, on_delete=models.CASCADE)
     displayName  = models.CharField(max_length=30, null=False, blank=False, default="User")
     bio          = models.CharField(max_length=200, blank=True)
     email        = models.EmailField(max_length=150, default="")
@@ -42,7 +44,7 @@ class TimeLine(models.Model):
     list           = models.ManyToManyField(Story, related_name="list")
 
     def __str__(self):
-        return self.owner.displayName + "Timeline"
+        return self.owner.displayName + " " + "Timeline"
 
     class Meta:
         verbose_name_plural = "TimeLine"
@@ -55,7 +57,7 @@ class Following(models.Model):
     follows = models.ManyToManyField(Profile, related_name="follows_list")
 
     def __str__(self):
-        return self.profile.displayName + "Following..."
+        return self.profile.displayName + " " + "Following..."
 
     
 
@@ -64,7 +66,7 @@ class Followers(models.Model):
     followers = models.ManyToManyField(Profile, related_name="followers_list")
 
     def __str__(self):
-        return self.profile.displayName + "Followers List"
+        return self.profile.displayName + " " + "Followers List"
 
     class Meta:
         verbose_name_plural = "Followers"
