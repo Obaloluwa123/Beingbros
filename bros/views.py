@@ -11,7 +11,7 @@ def index(request):
     
     context = {}
 
-    if request.bro.is_authenticated:
+    if request.user.is_authenticated:
         return redirect('home')
 
     if request.method == "POST":
@@ -50,3 +50,48 @@ def index(request):
     context['form'] = form
 
     return render(request, 'bros/registration.html', context)
+
+
+def home(request):
+    if request.method == "POST":
+        body   = request.POST['post-body']
+        post   = Story(creator=request.user, story_body=body) 
+        post.save()
+
+    try:
+        user   = User.objects.get(username=request.user.profile)
+    except:
+        return redirect('register')
+    
+    tl   = TimeLine.objects.get(owner=request.user.profile)
+    stories  = tl.list.all().order_by('-created')[:7]
+
+    context = {'stories':stories}
+
+    return render(request, 'bros/home.html', context)
+
+
+def signout_page(request):
+    logout(request)
+    return render(request, 'bros/signout.html', {})
+
+def signin_page(request):
+
+    if request.method == "POST":
+        username  = request.POST['username']
+        password  = request.POST['password']
+        
+        #set requirements (parameters) for authentication
+        user = authenticate(username=username, password=password)
+
+       #if authenticated go home
+        if user:
+            login(request, user)
+            return redirect('home')
+    
+    form = UserLoginForm()
+    context = {
+        "form": form,
+    }
+    return render(request, 'bros/signin.html', context)
+

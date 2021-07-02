@@ -12,7 +12,7 @@ import datetime
 # Create your models here.
 
 class Profile(models.Model):
-    bro          = models.OneToOneField(User, on_delete=models.CASCADE)
+    bro          = models.ForeignKey(User, on_delete=models.CASCADE)
     displayName  = models.CharField(max_length=30, null=False, blank=False, default="User")
     bio          = models.CharField(max_length=200, blank=True)
     email        = models.EmailField(max_length=150, default="")
@@ -28,13 +28,14 @@ class Profile(models.Model):
 
 class Story(models.Model):
     creator  = models.ForeignKey(Profile, on_delete=models.CASCADE)
-    body     = models.TextField(blank=False)
+    story_body     = models.TextField(blank=False)
     created  = models.DateTimeField(auto_now_add=True)
     likes    = models.IntegerField(default=0)
 
     def __str__(self):
-        return self.body
-    
+        return self.story_body
+
+    #to get right plurals
     class Meta:
         verbose_name_plural = "Stories"
 
