@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" href="https://img2.pngio.com/alphabet-b-letter-letters-red-icon-alphabet-b-png-512_512.png">
+    <meta name="apple-mobile-web-app-capable" content="yes" /> 
+    <meta name="apple-mobile-web-app-title" content="Beingbros">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href=`{% static "bros/css/app-styles.css" %}`>
+    <title>Beingbros</title>
+</head>
+<body>
+
+    <div class="sections" id="sections">
+        <section class="home">
+            
+            <div class="section-header">
+                <h3>Welcome</h3>
+            </div>
+
+            <div class="brocode-composing-area">
+                <textarea name="brocode-content" id="brocode-composing-area" placeholder="Say something..." ></textarea>
+                
+                <div class="composing-actions">
+                    <ul class="composing-action-btns">
+                        <li class="composing-action-elem"><span id="insert-photo-icon" class="material-icons noselect composing-icons">insert_photo</span><input accept="image/*" type="file" id="insert-img-btn"/></li>
+                        <li class="composing-action-elem"><span id="insert-emoji-icon" class="material-icons noselect composing-icons">insert_emoticon</span></li>
+                        <li class="composing-action-elem"><span id="insert-gif-icon" class="material-icons gif-icon noselect composing-icons">gif</span></li>
+                        <li class="composing-action-elem"><span id="insert-sound-icon" class="material-icons noselect composing-icons">mic</span></li>
+                    </ul>
+
+                    <button class="bronekt-btn noselect">Send</button>
+                </div>
+            </div>
+
+            <div class="newfeeds-container">
+                {% for story in stories %}
+                    <div class="tweet">
+                        <div class="tweet-container-left-col">
+                            <div class="tweet-author-picture-container">
+                                <img src="https://holmesbuilders.com/wp-content/uploads/2016/12/male-profile-image-placeholder.png" alt="" class="profile-header-img">
+                            </div>
+                        </div>
+                        <div class="tweet-container-right-col">
+                            <div class="tweet-card-header">
+                                <div class="tweet-author-display-name">{{story.creator.display_name}}</div>
+                                <div class="tweet-author-username">@{{story.creator.user}}</div>
+                            </div>     
+                            <div class="tweet-content">
+                                <p class="tweet-content-p">{{story.story_body}}</p>
+                            </div>
+                            <span hidden class="brocode-time">{{story.created.timestamp}}</span>
+                            <ul class="brocodes-action-btns">
+                                  <button class="btn"><li class="brocode-action-btn"><span class="material-icons action-icon">reply</span></li></button><!--
+                                --><button class="btn"><li class="brocode-action-btn"><span class="material-icons action-icon">thumbs_up_down</span></li></button><!--
+                                --><button class="btn"><li class="brocode-action-btn"><span class="material-icons action-icon ">favorite</span></li></button><!--
+                                --><button class="btn"><li class="brocode-action-btn"><span class="material-icons action-icon">share</span></li></button>
+                            </ul>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+        </section>
+
+        <section class="search">
+
+            <div class="section-header">
+                <h3>Discover</h3>
+            </div>
+            <input class="search-input" type="text" placeholder="Search...">
+            <div class="search-feeds"></div>
+            
+        </section>
+
+        <section class="connect">
+            <div class="section-header">
+                <h3>Connect</h3>
+            </div>
+        </section>
+
+        <section class="messages">
+            <div class="section-header">
+                <h3>Messages</h3>
+            </div>
+        </section>
+
+        <section class="profile">
+
+            <div class="profile-header">
+                <div class="profile-header-placeholder">
+                    <img src="https://images.pexels.com/photos/414171/pexels-photo-414171.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="profile-header-img" class="profile-header-img">
+                </div>
+        
+                <div class="profile-card">
+        
+                        <div id="profile-options">
+                            <div class="option-dots noselect"></div>
+                            <div class="option-dots noselect"></div>
+                            <div class="option-dots noselect"></div>
+                        </div>
+
+                        <div class="profile-card-left">
+                            <div class="profile-picture-placeholder">
+                                <img src="https://holmesbuilders.com/wp-content/uploads/2016/12/male-profile-image-placeholder.png" alt="profile-picture" class="profile-picture-content">
+                            </div>
+                            <div class="action-btns">
+                                <button class="action-btn edit">Edit Profile</button>
+                                <button class="action-btn share">Share Profile</button>
+                            </div>
+                        </div>
+        
+                        <div class="profile-card-right">
+                         <div class="names">
+                            <h1 class="display-name">
+                                {% if request.user.profile.displayName %}
+                                {{request.user.profile.displayName}}
+                                {% else %}
+                                {{request.user.first_name}}
+                                {% endif %}
+                            </h1>
+                            <h2 class="user-name">@{{request.user.username}}</h2>
+                         </div>
+                             <h4 class="user-bio">{{user.profile.bio}}</h4>
+                            <ul class="user-info">
+                                <li class="info-li red">Stories</li>
+                                <li class="info-li red">Following</li>
+                                <li class="info-li red">Followers</li>
+                            </ul>
+                            <ul class="user-info">
+                                <li class="info-li">0</li>
+                                <li class="info-li">0</li>
+                                <li class="info-li">0</li>
+                            </ul>
+                        </div>
+                        
+
+                </div>
+        
+            </div>
+        
+            <div class="timeline">
+
+            </div>
+            
+        </section>
+    </div>
+
+    <div class="overlay-background"></div>
+
+    <section class="pop-menu edit-menu  menu-hider">
+
+            <h2 class="edit-profile-header">
+                Edit
+            </h2>
+
+            <div class="cross-sign">
+                <h2 class="noselect cross-notation">Close</h2>
+            </div>
+
+            <div class="group">
+                <input class="edit-input" type="text"><span class="highlight"></span><span class="bar"></span>
+                <label class="edit-labels" id="edit-label-display-name">Name</label>
+              </div>
+              <div class="group">
+                <input class="edit-input" type="email"><span class="highlight"></span><span class="bar"></span>
+                <label class="edit-labels" id="edit-label-email">Email</label>
+              </div>
+
+
+              <div class="group">
+                <textarea class="edit-input bio-input"></textarea><span class="highlight"></span><span class="bar bio-bar"></span>
+                <label class="edit-labels" id="edit-label-bio">Biography</label>
+              </div>
+
+              <div class="group">
+                  <input type="date" class="edit-input" name="dateofbirth" id="dateofbirth" >
+              </div>
+
+              <div class="group">
+                  <button class="edit-submit">Submit</button>
+              </div>
+
+    </section>
+    
+
+
+    <section class="pop-menu share-menu  menu-hider">
+
+        <h2 class="share-profile-header">
+            Share...
+        </h2>
+
+        <div id="cross-sign-share" class="cross-sign">
+            <h2 class="noselect cross-notation">X</h2>
+        </div>
+
+
+        <label for="share-link" id="share-link-label">Link</label>
+        <input type="text" id="share-link" value="Beingbros.herokuapp.com/">
+        <button id="copy-profile-link">Copy</button>
+
+</section>
+
+
+
+
+
+
+    <div class="mic-blob mic-blob-disappear" id="mic-blob">
+        <div class="mic-blob-container">
+            <div class="cross-sign"  id="mic-menu-close">
+                <h2 class="noselect cross-notation cross-notation-mic">Cancel</h2>
+            </div>
+
+            <h3 class="hold-record-text">Hold To start recording</h3>
+            <div class="recording-mic-btn noselect"><span id="recording-mic-btn" class="material-icons noselect">mic</span></div>
+        </div>
+    </div>
+
+
+
+    <div id="sign-out-prompt" class="sign-out-prompt sign-out-blob-disappear">
+        <h3 id="logout-prompt-text" class="noselect">Do you really want to log out ?</h3>
+        <a class="noselect" id="logout-btn" href="{% url 'logout' %}">Logout</a>
+        <a class="noselect" id="logout-cancel-btn">Cancel</a>
+    </div>
+    
+    <nav class="bottom-navigation-bar">
+        <ul class="navigation-list">
+            <li class="nav-list-item"><span class="material-icons noselect navicon" style='color:rgb(228, 47, 47);'>home</span></li><!--
+            --><li class="nav-list-item"><span class="material-icons noselect navicon">track_changes</span></li><!--
+            --><li class="nav-list-item"><span class="material-icons noselect navicon">alternate_email</span></li><!--
+            --><li class="nav-list-item"><span class="material-icons noselect navicon">mail</span></li><!--
+            --><li class="nav-list-item"><span class="material-icons noselect navicon">person</span></li>
+        </ul>
+
+        <span class="underline"></span>
+    </nav>
+<script>(function(a,b,c){if(c in b&&b[c]){var d,e=a.location,f=/^(a|html)$/i;a.addEventListener("click",function(a){d=a.target;while(!f.test(d.nodeName))d=d.parentNode;"href"in d&&(chref=d.href).replace(e.href,"").indexOf("#")&&(!/^[a-z\+\.\-]+:/i.test(chref)||chref.indexOf(e.protocol+"//"+e.host)===0)&&(a.preventDefault(),e.href=d.href)},!1)}})(document,window.navigator,"standalone");
+</script>
+<script src= "{% static 'bros/js/App.js' %}""></script>
+</body>
+</html>

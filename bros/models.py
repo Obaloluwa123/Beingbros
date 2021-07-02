@@ -27,10 +27,10 @@ class Profile(models.Model):
    
 
 class Story(models.Model):
-    creator  = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    creator        = models.ForeignKey(Profile, on_delete=models.CASCADE)
     story_body     = models.TextField(blank=False)
-    created  = models.DateTimeField(auto_now_add=True)
-    likes    = models.IntegerField(default=0)
+    created        = models.DateTimeField(auto_now_add=True)
+    likes          = models.IntegerField(default=0)
 
     def __str__(self):
         return self.story_body
