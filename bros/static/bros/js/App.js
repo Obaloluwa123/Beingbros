@@ -18,7 +18,7 @@ const setupApp = () => {
     const editMenuBtn = document.querySelector(".edit");
     const crossSignEdit = document.querySelector(".cross-sign");
     const overlay = document.querySelector(".overlay-background");
-    const bronektBtn = document.querySelector(".bronekt-btn");
+    const bronektBtn = document.querySelector(".beingbros_btn");
     const newFeedsContainer = document.querySelector(".newfeeds-container");
     const editInputs = document.querySelectorAll(".edit-input");
     const insertPhotoBtn = document.getElementById("insert-photo-icon");

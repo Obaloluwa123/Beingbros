@@ -253,10 +253,7 @@ html {
   height: 50px;
   text-align: center;
   padding-top: 0.4rem;
-  color: #e42f2f;
-  background-color: #1d1d1d;
-  border-bottom-right-radius: 15px;
-  border-bottom-left-radius: 15px;
+  color: lightgreen;
   margin-bottom: 0.6rem;
 }
 
@@ -493,7 +490,7 @@ body::-webkit-scrollbar,
   height: 50px;
   position: absolute;
   top: 1.5rem;
-  border: 1px solid #e42f2f;
+  border: 3px solid green;
   border-radius: 50%;
   right: 2rem;
   text-align: center;
@@ -503,7 +500,7 @@ body::-webkit-scrollbar,
 
 .cross-notation {
   margin-top: 15%;
-  color: #e42f2f;
+  color: green;
 }
 
 .tweet-card-header {
@@ -583,6 +580,7 @@ body::-webkit-scrollbar,
 .composing-action-btns {
   height: 37px;
   width: 70%;
+ 
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -624,9 +622,8 @@ body::-webkit-scrollbar,
 }
 
 .composing-action-elem {
-  display: inline-block;
   width: 40px;
-  color: #e42f2f;
+  color: solid green;
   margin-top: 10px;
 }
 
