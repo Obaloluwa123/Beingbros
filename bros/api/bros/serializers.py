@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
-from ...models import Profile, Brocode
+from ...models import Profile, Story
 
 class UserModelSerializer(serializers.ModelSerializer):
     class Meta:
@@ -14,5 +14,5 @@ class ProfileModelSerializer(serializers.ModelSerializer):
         fields = "__all__"
 class BroCodeSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Brocode
+        model = Story
         fields = '__all__'

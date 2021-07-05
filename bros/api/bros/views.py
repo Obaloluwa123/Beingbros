@@ -18,7 +18,7 @@ def post_brocode(request):
         brocode = Story(creator=brocode_author.profile, story_body=brocode_body)
         brocode.save()
         personal_timeline = TimeLine.objects.get(owner=brocode_author.profile)
-        personal_timeline.brocodes_list.add(Story.objects.get(id=brocode.id))
+        personal_timeline.list.add(Story.objects.get(id=brocode.id))
         followers_list = Followers.objects.get(profile=brocode_author.profile)
         followers_list = followers_list.followers.all()
         if(len(followers_list)>0):
@@ -28,7 +28,7 @@ def post_brocode(request):
         serializer = BroCodeSerializer(brocode)
         response = serializer.data
         response['creator'] = request.user.username
-        response['creator-display-name'] = request.user.profile.display_name
+        response['creator-display-name'] = request.user.profile.displayName
         return JsonResponse(response, safe=False)
 
 def get_brocodes(request, timestamp):
@@ -46,7 +46,7 @@ def get_brocodes(request, timestamp):
         serializer = BroCodeSerializer(filtered_brocodes, many=True)
         for s in serializer.data:
             s['creator'] = Story.objects.get(id=s['id']).creator.user.username
-            s['creator-display-name'] = Story.objects.get(id=s['id']).creator.display_name
+            s['creator-display-name'] = Story.objects.get(id=s['id']).creator.displayName
         return JsonResponse(serializer.data,safe=False)
 
 def like_brocode(request, brocode_id):
@@ -64,7 +64,7 @@ def unlike_brocode(request, brocode_id):
 
 def search_users(request):
     search_query = json.loads(request.body)['search-query']
-    profiles = Profile.objects.filter(display_name__startswith=search_query)
+    profiles = Profile.objects.filter(displayName__startswith=search_query)
     serializer = ProfileModelSerializer(profiles,many=True)
     return JsonResponse(serializer.data,safe=False)
 

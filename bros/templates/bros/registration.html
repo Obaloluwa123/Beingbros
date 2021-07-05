@@ -1,5 +1,5 @@
-<!DOCTYPE html>
 {% load static %}
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -10,13 +10,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="{% static "users/css/landing.css" %}">
-        <title>Bronekt | Welcome</title>
+        <link rel="stylesheet" href="{% static 'bros/css/landing.css' %}">
+        <title>Welcome Dude!</title>
     </head>
 <body>
     <div class="container">
-
-        <h1 class="logo-header">b&lt;onekt</h1>
+        <h1 class="logo-header">Beingbros</h1>
         {% if error %}
             {{error}}
         {% endif %}
@@ -24,13 +23,10 @@
             {% csrf_token %}
             {{form.as_p}}
             <button id="sign-up-btn" type="submit">Register</button>
-            <p class="sign-in-prompt">Already have an account?<a target="_self" href="{% url 'login' %}"> log in</a> instead</p>
+            <p class="sign-in-prompt">Already have an account?<a target="_self" href="{% url 'signin' %}"> sign in</a> instead</p>
         </form>
     </div>
-
-
-
-    <script src="{% static "users/js/register.js" %}"></script>
+    <script src="{% static 'bros/js/register.js' %}"></script>
    
 </body>
 </html>

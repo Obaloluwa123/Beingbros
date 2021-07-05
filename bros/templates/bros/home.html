@@ -1,16 +1,17 @@
-<!DOCTYPE html>
 {% load static %}
+<!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="apple-touch-icon" href="https://img2.pngio.com/alphabet-b-letter-letters-red-icon-alphabet-b-png-512_512.png">
     <meta name="apple-mobile-web-app-capable" content="yes" /> 
-    <meta name="apple-mobile-web-app-title" content="Beingbros">
+    <meta name="apple-mobile-web-app-title" content="Bronekt">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href=`{% static "bros/css/app-styles.css" %}`>
+    <link rel="stylesheet" href="{% static 'bros/css/app-styles.css' %}">
     <title>Beingbros</title>
 </head>
 <body>
@@ -19,11 +20,11 @@
         <section class="home">
             
             <div class="section-header">
-                <h3>Welcome</h3>
+                <h3>Everything here stays here</h3>
             </div>
 
             <div class="brocode-composing-area">
-                <textarea name="brocode-content" id="brocode-composing-area" placeholder="Say something..." ></textarea>
+                <textarea name="brocode-content" id="brocode-composing-area" placeholder="Talk..." ></textarea>
                 
                 <div class="composing-actions">
                     <ul class="composing-action-btns">
@@ -33,12 +34,12 @@
                         <li class="composing-action-elem"><span id="insert-sound-icon" class="material-icons noselect composing-icons">mic</span></li>
                     </ul>
 
-                    <button class="bronekt-btn noselect">Send</button>
+                    <button class="beingbros_btn">Submit</button>
                 </div>
             </div>
 
             <div class="newfeeds-container">
-                {% for story in stories %}
+                {% for brocode in stories %}
                     <div class="tweet">
                         <div class="tweet-container-left-col">
                             <div class="tweet-author-picture-container">
@@ -47,18 +48,18 @@
                         </div>
                         <div class="tweet-container-right-col">
                             <div class="tweet-card-header">
-                                <div class="tweet-author-display-name">{{story.creator.display_name}}</div>
-                                <div class="tweet-author-username">@{{story.creator.user}}</div>
+                                <div class="tweet-author-display-name">{{brocode.author.displayName}}</div>
+                                <div class="tweet-author-username">@{{brocode.creator.bro}}</div>
                             </div>     
                             <div class="tweet-content">
-                                <p class="tweet-content-p">{{story.story_body}}</p>
+                                <p class="tweet-content-p">{{brocode.story_body}}</p>
                             </div>
-                            <span hidden class="brocode-time">{{story.created.timestamp}}</span>
+                            <span hidden class="brocode-time">{{brocode.created.timestamp}}</span>
                             <ul class="brocodes-action-btns">
-                                  <button class="btn"><li class="brocode-action-btn"><span class="material-icons action-icon">reply</span></li></button><!--
-                                --><button class="btn"><li class="brocode-action-btn"><span class="material-icons action-icon">thumbs_up_down</span></li></button><!--
-                                --><button class="btn"><li class="brocode-action-btn"><span class="material-icons action-icon ">favorite</span></li></button><!--
-                                --><button class="btn"><li class="brocode-action-btn"><span class="material-icons action-icon">share</span></li></button>
+                                <li class="brocode-action-btn"><span class="material-icons action-icon">reply</span></li><!--
+                                --><li class="brocode-action-btn"><span class="material-icons action-icon">thumbs_up_down</span></li><!--
+                                --><li class="brocode-action-btn"><span class="material-icons action-icon ">favorite</span></li><!--
+                                --><li class="brocode-action-btn"><span class="material-icons action-icon">share</span></li>
                             </ul>
                         </div>
                     </div>
@@ -115,21 +116,19 @@
                         </div>
         
                         <div class="profile-card-right">
-                         <div class="names">
                             <h1 class="display-name">
-                                {% if request.user.profile.displayName %}
-                                {{request.user.profile.displayName}}
+                                {% if request.user.profile.display_name %}
+                                {{request.user.profile.display_name}}
                                 {% else %}
                                 {{request.user.first_name}}
                                 {% endif %}
                             </h1>
                             <h2 class="user-name">@{{request.user.username}}</h2>
-                         </div>
-                             <h4 class="user-bio">{{user.profile.bio}}</h4>
+                            <h4 class="user-bio">{{user.profile.bio}}</h4>
                             <ul class="user-info">
-                                <li class="info-li red">Stories</li>
-                                <li class="info-li red">Following</li>
-                                <li class="info-li red">Followers</li>
+                                <li class="info-li red">BroCodes</li>
+                                <li class="info-li red">Bros</li>
+                                <li class="info-li red">Fellows</li>
                             </ul>
                             <ul class="user-info">
                                 <li class="info-li">0</li>
@@ -155,11 +154,11 @@
     <section class="pop-menu edit-menu  menu-hider">
 
             <h2 class="edit-profile-header">
-                Edit
+                Edit Profile
             </h2>
 
             <div class="cross-sign">
-                <h2 class="noselect cross-notation">Close</h2>
+                <h2 class="noselect cross-notation">X</h2>
             </div>
 
             <div class="group">
@@ -192,7 +191,7 @@
     <section class="pop-menu share-menu  menu-hider">
 
         <h2 class="share-profile-header">
-            Share...
+            Share Profile
         </h2>
 
         <div id="cross-sign-share" class="cross-sign">
@@ -201,7 +200,7 @@
 
 
         <label for="share-link" id="share-link-label">Link</label>
-        <input type="text" id="share-link" value="Beingbros.herokuapp.com/">
+        <input type="text" id="share-link" value="Bronekt.com/UserUrl">
         <button id="copy-profile-link">Copy</button>
 
 </section>
@@ -214,7 +213,7 @@
     <div class="mic-blob mic-blob-disappear" id="mic-blob">
         <div class="mic-blob-container">
             <div class="cross-sign"  id="mic-menu-close">
-                <h2 class="noselect cross-notation cross-notation-mic">Cancel</h2>
+                <h2 class="noselect cross-notation cross-notation-mic">X</h2>
             </div>
 
             <h3 class="hold-record-text">Hold To start recording</h3>
@@ -226,7 +225,7 @@
 
     <div id="sign-out-prompt" class="sign-out-prompt sign-out-blob-disappear">
         <h3 id="logout-prompt-text" class="noselect">Do you really want to log out ?</h3>
-        <a class="noselect" id="logout-btn" href="{% url 'logout' %}">Logout</a>
+        <a class="noselect" id="logout-btn" href="{% url 'signout' %}">Sign out</a>
         <a class="noselect" id="logout-cancel-btn">Cancel</a>
     </div>
     
@@ -243,6 +242,6 @@
     </nav>
 <script>(function(a,b,c){if(c in b&&b[c]){var d,e=a.location,f=/^(a|html)$/i;a.addEventListener("click",function(a){d=a.target;while(!f.test(d.nodeName))d=d.parentNode;"href"in d&&(chref=d.href).replace(e.href,"").indexOf("#")&&(!/^[a-z\+\.\-]+:/i.test(chref)||chref.indexOf(e.protocol+"//"+e.host)===0)&&(a.preventDefault(),e.href=d.href)},!1)}})(document,window.navigator,"standalone");
 </script>
-<script src= "{% static 'bros/js/App.js' %}""></script>
+<script src="{% static 'bros/js/App.js' %}"></script>
 </body>
 </html>

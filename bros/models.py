@@ -12,7 +12,7 @@ import datetime
 # Create your models here.
 
 class Profile(models.Model):
-    bro          = models.ForeignKey(User, on_delete=models.CASCADE)
+    bro          = models.OneToOneField(User, related_name="profile", on_delete=models.CASCADE)
     displayName  = models.CharField(max_length=30, null=False, blank=False, default="User")
     bio          = models.CharField(max_length=200, blank=True)
     email        = models.EmailField(max_length=150, default="")

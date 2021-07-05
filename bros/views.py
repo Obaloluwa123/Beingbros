@@ -59,7 +59,7 @@ def home(request):
         post.save()
 
     try:
-        user   = User.objects.get(username=request.user.profile)
+        user   = User.objects.get(username=request.user)
     except:
         return redirect('register')
     
@@ -94,4 +94,8 @@ def signin_page(request):
         "form": form,
     }
     return render(request, 'bros/signin.html', context)
+
+
+
+
 

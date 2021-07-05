@@ -14,7 +14,6 @@ class UserRegistrationForm(ModelForm):
         self.fields['email'].widget.attrs.update({'class': 'input-field', 'autocomplete':'off', 'placeholder':'Email'})
         self.fields['password'].widget.attrs.update({'class': 'input-field', 'autocomplete':'off', 'placeholder':'Set password'})
 
-    
     class Meta:
         model = User
         fields = ['username', 'first_name', 'last_name', 'email', 'password']
@@ -29,8 +28,8 @@ class UserRegistrationForm(ModelForm):
 class UserLoginForm(ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['username'].widget.attrs.update({'class': 'input-field', 'autocomplete':'off', 'placeholder':'Username'})
-        self.fields['password'].widget.attrs.update({'class': 'input-field', 'autocomplete':'off', 'placeholder':'Set password'})
+        self.fields['username'].widget.attrs.update({'class': 'input-field', 'autocomplete':'off', 'placeholder':'username'})
+        self.fields['password'].widget.attrs.update({'class': 'input-field', 'autocomplete':'off', 'placeholder':'set password'})
 
     
     class Meta:
