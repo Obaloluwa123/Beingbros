@@ -15,11 +15,7 @@ def create_profile(sender, instance, created, **kwargs):
         profile.slug = profile.bro.username
         profile.save()
 
-@receiver(post_delete, sender=User)
-def delete_profile(sender, instance, created, **kwargs):
-    if not created:
-       profile = Profile(bro=instance)
-       profile.delete()
+
     
 @receiver(post_save, sender=Profile)
 def create_timeline(sender,instance,created,**kwargs):

@@ -56,10 +56,11 @@
                             </div>
                             <span hidden class="brocode-time">{{brocode.created.timestamp}}</span>
                             <ul class="brocodes-action-btns">
-                                <li class="brocode-action-btn"><span class="material-icons action-icon">reply</span></li><!--
-                                --><li class="brocode-action-btn"><span class="material-icons action-icon">thumbs_up_down</span></li><!--
-                                --><li class="brocode-action-btn"><span class="material-icons action-icon ">favorite</span></li><!--
-                                --><li class="brocode-action-btn"><span class="material-icons action-icon">share</span></li>
+                                <button><li class="brocode-action-btn"><span class="material-icons action-icon">reply</span></li></button><!--
+                                --><button><li class="brocode-action-btn"><span class="material-icons action-icon">thumb_up</span></li></button><!--
+                                --><button><li class="brocode-action-btn"><span class="material-icons action-icon">thumb_down</span></li></button><!--
+                                --><button><li class="brocode-action-btn"><span class="material-icons action-icon ">favorite</span></li></button><!--
+                                --><button><li class="brocode-action-btn"><span class="material-icons action-icon">share</span></li></button>
                             </ul>
                         </div>
                     </div>
@@ -94,7 +95,7 @@
 
             <div class="profile-header">
                 <div class="profile-header-placeholder">
-                    <img src="https://images.pexels.com/photos/414171/pexels-photo-414171.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="profile-header-img" class="profile-header-img">
+                    <img src="https://images.unsplash.com/photo-1442876906995-6761040d1f0b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8M3wxOTY0Nzg2fHxlbnwwfHx8fA%3D%3D&w=1000&q=80" alt="profile-header-img" class="profile-header-img">
                 </div>
         
                 <div class="profile-card">
@@ -116,6 +117,7 @@
                         </div>
         
                         <div class="profile-card-right">
+                          <div class="names">
                             <h1 class="display-name">
                                 {% if request.user.profile.display_name %}
                                 {{request.user.profile.display_name}}
@@ -124,11 +126,12 @@
                                 {% endif %}
                             </h1>
                             <h2 class="user-name">@{{request.user.username}}</h2>
+                          </div>
                             <h4 class="user-bio">{{user.profile.bio}}</h4>
                             <ul class="user-info">
-                                <li class="info-li red">BroCodes</li>
-                                <li class="info-li red">Bros</li>
-                                <li class="info-li red">Fellows</li>
+                                <li class="info-li red">Submitted stories</li>
+                                <li class="info-li red">Followers</li>
+                                <li class="info-li red">Following</li>
                             </ul>
                             <ul class="user-info">
                                 <li class="info-li">0</li>
@@ -195,7 +198,7 @@
         </h2>
 
         <div id="cross-sign-share" class="cross-sign">
-            <h2 class="noselect cross-notation">X</h2>
+            <h2 class="noselect cross-notation">Cancel</h2>
         </div>
 
 
@@ -213,11 +216,11 @@
     <div class="mic-blob mic-blob-disappear" id="mic-blob">
         <div class="mic-blob-container">
             <div class="cross-sign"  id="mic-menu-close">
-                <h2 class="noselect cross-notation cross-notation-mic">X</h2>
+                <h2 class="noselect cross-notation cross-notation-mic">Cancel</h2>
             </div>
 
-            <h3 class="hold-record-text">Hold To start recording</h3>
-            <div class="recording-mic-btn noselect"><span id="recording-mic-btn" class="material-icons noselect">mic</span></div>
+            <h3 class="hold-record-text">Hold to record</h3>
+            <div class="recording-mic-btn noselect" ><span id="recording-mic-btn" class="material-icons noselect">mic</span></div>
         </div>
     </div>
 
@@ -231,7 +234,7 @@
     
     <nav class="bottom-navigation-bar">
         <ul class="navigation-list">
-            <li class="nav-list-item"><span class="material-icons noselect navicon" style='color:rgb(228, 47, 47);'>home</span></li><!--
+            <li class="nav-list-item"><span class="material-icons noselect navicon" style='color: lightgreen;'>home</span></li><!--
             --><li class="nav-list-item"><span class="material-icons noselect navicon">track_changes</span></li><!--
             --><li class="nav-list-item"><span class="material-icons noselect navicon">alternate_email</span></li><!--
             --><li class="nav-list-item"><span class="material-icons noselect navicon">mail</span></li><!--

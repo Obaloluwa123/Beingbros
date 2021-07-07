@@ -18,7 +18,7 @@ const setupApp = () => {
     const editMenuBtn = document.querySelector(".edit");
     const crossSignEdit = document.querySelector(".cross-sign");
     const overlay = document.querySelector(".overlay-background");
-    const bronektBtn = document.querySelector(".beingbros_btn");
+    const bronektBtn = document.querySelector(".beingbros-btn");
     const newFeedsContainer = document.querySelector(".newfeeds-container");
     const editInputs = document.querySelectorAll(".edit-input");
     const insertPhotoBtn = document.getElementById("insert-photo-icon");
@@ -83,7 +83,7 @@ const setupApp = () => {
             if(search_input.value.length > 1){
   
   
-                fetch(`https://api.giphy.com/v1/gifs/search?api_key=Hp18gzUcD8GnldVWFbfaG7ncdmenXo7i&q=${search_input.value}&limit=25&offset=0&rating=g&lang=en`,{
+                fetch(`https://api.giphy.com/v1/gifs/search?api_key=dc6zaTOxFJmzC&q=`,{
             headers: {
                 'Content-Type': 'application/json',
             }
@@ -126,7 +126,7 @@ const setupApp = () => {
         let searchData = {
           "search-query": searchInput.value,
         };
-        postData("/user/api/searchusers", searchData).then((response) => {
+        postData("/bros/api/searchusers", searchData).then((response) => {
           let _html = "";
           response.forEach((elem) => {
             let elementTemplate = `
@@ -224,7 +224,7 @@ const setupApp = () => {
     recordBtn.addEventListener(
       "touchstart",
       () => {
-        recordBtn.style.color = "rgb(228, 47, 47)";
+        recordBtn.style.color = "rgb(144,238,144)";
       },
       false
     );
@@ -285,7 +285,7 @@ const setupApp = () => {
         let bronektData = {
           "brocode-body": bronektComposingArea.value,
         };
-        postData("/user/api/post_brocode", bronektData).then((response) => {
+        postData("/bros/api/post_brocode", bronektData).then((response) => {
           let brocodeDiv = document.createElement("div");
           brocodeDiv.setAttribute("class", "tweet");
           brocodeDiv.innerHTML = createNewBrocode(response);
@@ -358,7 +358,7 @@ const setupApp = () => {
     for (let i = 0; i < btns.length; i++) {
       btns[i].addEventListener("click", () => {
         underline.style.left = `${lineStartings[i]}%`;
-        btns[i].style.color = "rgb(228, 47, 47)";
+        btns[i].style.color = "rgb(144,238,144)";
         home.style.transform = `translateX(${pageStartings[i]}vw)`;
         search.style.transform = `translateX(${pageStartings[i]}vw)`;
         connect.style.transform = `translateX(${pageStartings[i]}vw)`;
@@ -446,7 +446,7 @@ const setupApp = () => {
   }
   
   function getProfileData() {
-    fetch("/user/api/profile_data")
+    fetch("/bros/api/profile_data")
       .then((response) => response.json())
       .then((data) => {
         let editLabelName = document.getElementById("edit-label-display-name");
@@ -471,7 +471,7 @@ const setupApp = () => {
   }
   
   function getBrocodes(timestamp) {
-    fetch(`/user/api/get_brocodes/${parseInt(timestamp)}`)
+    fetch(`/bros/api/get_brocodes/${parseInt(timestamp)}`)
       .then((response) => response.json())
       .then((data) => {
         let newFeedsContainer = document.querySelector(".newfeeds-container");
@@ -492,7 +492,7 @@ const setupApp = () => {
   
   function entityClicked(entity){
     let slug = entity.querySelector('.slug').innerText;
-    fetch(`/user/api/profile/${slug}`)
+    fetch(`/bros/api/profile/${slug}`)
       .then((response) => response.json())
       .then((data) => {
         showProfile(data);
@@ -535,9 +535,9 @@ const setupApp = () => {
                     <li class="info-li red">Fellows</li>
                 </ul>
                 <ul class="user-info">
-                    <li class="info-li">10</li>
-                    <li class="info-li">200</li>
-                    <li class="info-li">3000</li>
+                    <li class="info-li">0</li>
+                    <li class="info-li">0</li>
+                    <li class="info-li">0</li>
                 </ul>
             </div>
     </div>
@@ -555,7 +555,7 @@ const setupApp = () => {
   }
   
   function commitFollow(intent){
-    fetch(`/user/api/commit_follow/${intent.value}`)
+    fetch(`/bros/api/commit_follow/${intent.value}`)
     .then(response => response.json())
     .then(response =>{
     });

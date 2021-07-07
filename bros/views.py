@@ -21,7 +21,7 @@ def index(request):
             email = form.cleaned_data['email']
             try:
                 User.objects.get(email=email)
-                error = "Email already exists"
+                error = "E-mail already registered!"
                 context['error'] = error
                 context['form'] = form
                 return render(request, 'bros/registration.html', context)

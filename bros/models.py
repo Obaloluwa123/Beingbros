@@ -18,7 +18,7 @@ class Profile(models.Model):
     email        = models.EmailField(max_length=150, default="")
     birthDate    = models.DateField(default=datetime.date(2000,1,1))
     slug         = models.CharField(max_length=120, null=True, blank=True)
-
+  #  created        = models.DateTimeField(auto_now_add=True)
     def __str__(self):
         return self.bro.first_name + " " + self.bro.last_name
 
