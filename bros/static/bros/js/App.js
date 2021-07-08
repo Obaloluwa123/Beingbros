@@ -391,14 +391,15 @@ const setupApp = () => {
               <div class="tweet-author-username">@${brocode["author"]}</div>
           </div>     
           <div class="tweet-content">
-              <p class="tweet-content-p">${brocode["brocode_body"]}</p>
+              <p class="tweet-content-p">${brocode["story_body"]}</p>
           </div>
           <span hidden class="brocode-time">${new Date(brocode['created']).getTime()/1000}</span>
           <ul class="brocodes-action-btns">
-              <li class="brocode-action-btn"><span class="material-icons action-icon">reply</span></li><!--
-              --><li class="brocode-action-btn"><span class="material-icons action-icon">thumbs_up_down</span></li><!--
-              --><li class="brocode-action-btn"><span class="material-icons action-icon "onclick=\"toggleLike(this)\">favorite</span></li><!--
-              --><li class="brocode-action-btn"><span class="material-icons action-icon">share</span></li>
+                 <button><li class="brocode-action-btn"><span class="material-icons action-icon">reply</span></li></button><!--
+              --><button><li class="brocode-action-btn"><span class="material-icons action-icon">thumb_up</span></li></button><!--
+              --><button><li class="brocode-action-btn"><span class="material-icons action-icon">thumb_down</span></li></button><!--
+              --><button><li class="brocode-action-btn"><span class="material-icons action-icon ">favorite</span></li></button><!--
+              --><button><li class="brocode-action-btn"><span class="material-icons action-icon">share</span></li></button>
           </ul>
       </div>`;
   
@@ -525,14 +526,14 @@ const setupApp = () => {
             </div>
             <div class="profile-card-right">
                 <h1 class="display-name">
-                    ${data['display_name']}
+                    ${data['displayName']}
                 </h1>
                 <h2 class="user-name">@${data['username']}</h2>
                 <h4 class="user-bio">${data['bio']}</h4>
                 <ul class="user-info">
-                    <li class="info-li red">BroCodes</li>
-                    <li class="info-li red">Bros</li>
-                    <li class="info-li red">Fellows</li>
+                    <li class="info-li red">Submitted stories</li>
+                    <li class="info-li red">Followers</li>
+                    <li class="info-li red">Following</li>
                 </ul>
                 <ul class="user-info">
                     <li class="info-li">0</li>

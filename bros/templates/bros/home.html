@@ -48,7 +48,7 @@
                         </div>
                         <div class="tweet-container-right-col">
                             <div class="tweet-card-header">
-                                <div class="tweet-author-display-name">{{brocode.author.displayName}}</div>
+                                <div class="tweet-author-display-name">{{brocode.creator.displayName}}</div>
                                 <div class="tweet-author-username">@{{brocode.creator.bro}}</div>
                             </div>     
                             <div class="tweet-content">
@@ -119,8 +119,8 @@
                         <div class="profile-card-right">
                           <div class="names">
                             <h1 class="display-name">
-                                {% if request.user.profile.display_name %}
-                                {{request.user.profile.display_name}}
+                                {% if request.user.profile.displayName %}
+                                {{request.user.profile.displayName}}
                                 {% else %}
                                 {{request.user.first_name}}
                                 {% endif %}

@@ -72,8 +72,17 @@ def home(request):
 
 
 def signout_page(request):
+    tl   = TimeLine.objects.get(owner=request.user.profile)
+    
+ 
+    stringed = str(tl)
+    listed = stringed.split(" ")
+    dictionary = dict()
+    dictionary['displayname'] = listed[0]
     logout(request)
-    return render(request, 'bros/signout.html', {})
+    print(dictionary)
+    dictionary['dumb'] = "dumber"
+    return render(request, 'bros/signout.html', dictionary)
 
 def signin_page(request):
 

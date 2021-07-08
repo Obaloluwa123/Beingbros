@@ -7,5 +7,4 @@ urlpatterns = [
     path('home', views.home,name='home'),
     path('signout', views.signout_page,name='signout'),
     path('signin', views.signin_page,name='signin'),
-
 ]
