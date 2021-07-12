@@ -146,7 +146,32 @@
             </div>
         
             <div class="timeline">
-
+                {% for brocode in stories %}
+                <div class="tweet">
+                    <div class="tweet-container-left-col">
+                        <div class="tweet-author-picture-container">
+                            <img src="https://holmesbuilders.com/wp-content/uploads/2016/12/male-profile-image-placeholder.png" alt="" class="profile-header-img">
+                        </div>
+                    </div>
+                    <div class="tweet-container-right-col">
+                        <div class="tweet-card-header">
+                            <div class="tweet-author-display-name">{{brocode.creator.displayName}}</div>
+                            <div class="tweet-author-username">@{{brocode.creator.bro}}</div>
+                        </div>     
+                        <div class="tweet-content">
+                            <p class="tweet-content-p">{{brocode.story_body}}</p>
+                        </div>
+                        <span hidden class="brocode-time">{{brocode.created.timestamp}}</span>
+                        <ul class="brocodes-action-btns">
+                            <button><li class="brocode-action-btn"><span class="material-icons action-icon">reply</span></li></button><!--
+                            --><button><li class="brocode-action-btn"><span class="material-icons action-icon">thumb_up</span></li></button><!--
+                            --><button><li class="brocode-action-btn"><span class="material-icons action-icon">thumb_down</span></li></button><!--
+                            --><button><li class="brocode-action-btn"><span class="material-icons action-icon ">favorite</span></li></button><!--
+                            --><button><li class="brocode-action-btn"><span class="material-icons action-icon">share</span></li></button>
+                        </ul>
+                    </div>
+                </div>
+            {% endfor %}
             </div>
             
         </section>

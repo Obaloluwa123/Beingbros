@@ -139,7 +139,7 @@ const setupApp = () => {
       <div class="tweet-container-right-col">
           <div class="tweet-card-header">
               <span class="slug" hidden>${elem['slug']}</span>
-              <div class="tweet-author-display-name">${elem["display_name"]}</div>
+              <div class="tweet-author-display-name">${elem["displayName"]}</div>
           </div>     
       </div>
       </div>`;

@@ -91,12 +91,12 @@ label {
 
 #sign-in-btn:active
  {
-    background-color: rgb(180, 39, 39);
+    background-color: lightgreen;
 }
 
 #sign-in-btn {
     border: none;
-    background-color: rgb(228, 47, 47);
+    background-color: green;
     font-size: 0.8em;
     padding: 5px 15px;
     color: #fff;
@@ -119,6 +119,6 @@ label {
 
 .sign-in-prompt a:visited,
 .sign-in-prompt a:link{
-    color: rgb(228, 47, 47);
+    color: rgb(180, 39, 39);
     text-decoration: none;
 }
