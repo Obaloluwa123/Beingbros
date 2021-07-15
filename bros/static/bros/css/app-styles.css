@@ -771,9 +771,14 @@ body::-webkit-scrollbar,
   text-decoration: none;
   padding: 10px 20px;
   border-radius: 25px;
-  background-color: #e42f2f;
+  background-color: #2d2d2d;
   color: #fff;
-  border: 1px solid rgba(0, 0, 0, 0);
+  border: 1px solid red;
+  transition: background-color 0.3s;
+}
+
+#logout-btn:hover{
+  background-color:  red !important;
 }
 
 #logout-prompt-text {
@@ -782,7 +787,7 @@ body::-webkit-scrollbar,
 }
 
 #logout-cancel-btn:hover {
-  background-color: #e42f2f;
+  background-color: green;
 }
 
 #logout-cancel-btn {
@@ -791,7 +796,7 @@ body::-webkit-scrollbar,
   border-radius: 25px;
   background-color: #2d2d2d;
   color: #fff;
-  border: 1px solid #e42f2f;
+  border: 1px solid lightgreen;
   transition: background-color 0.3s;
 }
 
