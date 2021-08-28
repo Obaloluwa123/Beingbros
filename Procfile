@@ -1,1 +1,1 @@
-web: gunicorn Beingbros.wsgi
+web: gunicorn beingbros.wsgi
