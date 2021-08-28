@@ -774,12 +774,21 @@ body::-webkit-scrollbar,
   border-radius: 25px;
   background-color: #2d2d2d;
   color: #fff;
+<<<<<<< HEAD
+  border: 1px solid #e42f2f;
+}
+
+#logout-btn:hover {
+  background-color: #e42f2f;
+  
+=======
   border: 1px solid red;
   transition: background-color 0.3s;
 }
 
 #logout-btn:hover{
   background-color:  red !important;
+>>>>>>> 9bc09199769ffda4e18fb8a9f51136468b24bbfb
 }
 
 #logout-prompt-text {
@@ -798,7 +807,11 @@ body::-webkit-scrollbar,
   background-color: #2d2d2d;
   color: #fff;
   border: 1px solid lightgreen;
+<<<<<<< HEAD
+  transition: background-color 0.4s;
+=======
   transition: background-color 0.3s;
+>>>>>>> 9bc09199769ffda4e18fb8a9f51136468b24bbfb
 }
 
 .sign-out-blob-disappear {
