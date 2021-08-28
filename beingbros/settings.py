@@ -15,7 +15,7 @@ import django_heroku
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 print("base dir path", BASE_DIR)
-TEMPLATE_DIR = BASE_DIR / 'bros'/'templates'
+TEMPLATE_DIR = BASE_DIR / 'templates'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
@@ -125,9 +125,9 @@ USE_TZ = True
 
 
 
-STATIC_URL = '/static/'
 
-STATICFILES_DIRS = BASE_DIR /'bros'/ 'static',
+STATIC_URL = '/static/'
+STATICFILES_DIRS = BASE_DIR / 'static',
 STATIC_ROOT = 'staticfiles'
 django_heroku.settings(locals())
 
