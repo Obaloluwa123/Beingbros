@@ -5,7 +5,6 @@ from  ...models  import Profile, Story, TimeLine, Following, Followers
 import time, datetime
 
 def response(request):
-    
     profile = Profile.objects.get(user=request.user)
     serializer = ProfileModelSerializer(profile)
     return JsonResponse(serializer.data, safe=False)
@@ -36,16 +35,20 @@ def get_brocodes(request, timestamp):
 
         datetime_ = datetime.datetime.fromtimestamp(float(timestamp)/1000)
         personal_timeline = TimeLine.objects.get(owner=request.user.profile)
-        retrived_brocodes = personal_timeline.list.all().order_by('-created').exclude(creator=request.user.profile)[:30]
+       #retrived_brocodes = personal_timeline.list.all().order_by('-created').exclude(creator=request.user.profile)[:30]
+        retrived_brocodes = personal_timeline.list.all().order_by('-created')[:8]
+        print(retrived_brocodes)
         filtered_brocodes = []
         for bc in retrived_brocodes:
+            print(int(bc.created.timestamp()))
+            print(int(timestamp))
             if(int(bc.created.timestamp()) > int(timestamp)):
                 filtered_brocodes.append(bc)
         
         
         serializer = BroCodeSerializer(filtered_brocodes, many=True)
         for s in serializer.data:
-            s['creator'] = Story.objects.get(id=s['id']).creator.user.username
+            s['creator'] = Story.objects.get(id=s['id']).creator.bro.username
             s['creator-display-name'] = Story.objects.get(id=s['id']).creator.displayName
         return JsonResponse(serializer.data,safe=False)
 
