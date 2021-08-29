@@ -803,11 +803,7 @@ body::-webkit-scrollbar,
   background-color: #2d2d2d;
   color: #fff;
   border: 1px solid lightgreen;
-<<<<<<< HEAD
   transition: background-color 0.4s;
-=======
-  transition: background-color 0.3s;
->>>>>>> 9bc09199769ffda4e18fb8a9f51136468b24bbfb
 }
 
 .sign-out-blob-disappear {
