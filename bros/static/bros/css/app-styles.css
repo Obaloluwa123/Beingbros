@@ -315,20 +315,22 @@ html {
   transition: top 0.3s;
   z-index: 10;
 }
-
+.share {
+  text-align: center;
+}
 #share-link {
   background: none;
   outline: none;
-  border: 1px solid #e42f2f;
+  border: 1px solid blue;
   color: #fff;
   text-align: center;
-  border-radius: 5px;
+  border-radius: 15px;
   padding: 4px 5px;
-  width: 100%;
+  width: 50%;
 }
 
 #copy-profile-link {
-  width: 80%;
+  width: 10%;
   padding: 10px 5px;
   font-size: 1em;
   font-weight: 700;
@@ -338,12 +340,12 @@ html {
   color: #fff;
   border-radius: 15px;
   outline: none;
-  border: 2px solid #e42f2f;
+  border: 2px solid blue;
   margin-top: 20px;
 }
 
 #share-link-label {
-  color: #e42f2f;
+  color: lightgreen;
   position: absolute;
   left: 50%;
   top: 30%;
@@ -455,11 +457,14 @@ body::-webkit-scrollbar,
 .profile::-webkit-scrollbar {
   display: none;
 }
-
+.share-header {
+  text-align: center;
+}
 .edit-profile-header,
 .share-profile-header {
   color: lightgreen;
   margin-bottom: 2.7rem;
+  text-align: center;
 }
 
 @keyframes inputHighlighter {
